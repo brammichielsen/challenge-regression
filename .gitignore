@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #the environment
 .immo-eliza-data-analysis
 
@@ -6,3 +7,7 @@
 
 #immoweb data .txt
 message.txt
+=======
+#venv eliza-2
+/eliza-2/
+>>>>>>> e6b4a8d6e1768b3476e542df61ea0cf463893569
