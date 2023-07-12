@@ -1,8 +1,8 @@
 #the environment
-/.immo-eliza-data-analysis
+.immo-eliza-data-analysis
 
 #assignment readme
-/2.immo_eliza_analysis.md
+2.immo_eliza_analysis.md
 
 #immoweb data .txt
-/message.txt
+message.txt
