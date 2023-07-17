@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-#the environment
-.immo-eliza-data-analysis
+#Jupyter checkpoint files
+/data-exploration/.ipynb_checkpoints
 
-#assignment readme
-2.immo_eliza_analysis.md
-
-#immoweb data .txt
-message.txt
-=======
-#venv eliza-2
-/eliza-2/
->>>>>>> e6b4a8d6e1768b3476e542df61ea0cf463893569
+#venv
+eliza-2
