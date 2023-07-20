@@ -8,6 +8,28 @@ from sklearn.linear_model import LinearRegression
 from xgboost import XGBRegressor
 
 def main():
+    """
+    Main function for running the regression model training, evaluation, and cross-validation.
+
+    This function performs the following steps:
+    1. Searches for a .csv file in the specified directory.
+    2. If a .csv file is found, it imports the data into a DataFrame.
+    3. Cleans and preprocesses the data.
+    4. Splits the data into training and testing sets.
+    5. Scales the data.
+    6. Trains and evaluates the Linear Regression model.
+    7. Trains and evaluates the XGBoost model.
+    8. Displays the R2 scores for both models.
+    9. Evaluates the models using Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and Mean Absolute Error (MAE).
+    10. Performs cross-validation on both models using 5-fold cross-validation and calculates the mean and standard deviation of RMSE scores.
+
+    Note: The directory_path variable defines the directory where the CSV files are located. The function uses the find_csv_file
+    function to search for a .csv file in that directory and read the data from it. If a .csv file is not found, an error message is displayed.
+
+    Returns:
+    None
+    """
+     
     # Define the directory path where the CSV files are located
     directory_path = "data/"
 

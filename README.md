@@ -1,29 +1,69 @@
+# Immo Eliza Project - Part 3: Regression
+
 ## 1. Description:
-In this section, you should provide a brief overview of your project. Describe what the project does, its purpose, and any key features. This section should give readers a clear understanding of what your project is about and why it was created.
+
+(tbd)
 
 ## 2. Installation:
-In the installation section, provide step-by-step instructions on how to set up and install your project. Include any dependencies that need to be installed, how to install them (e.g., using pip or conda), and any other setup required for the project to run successfully.
+1. Clone the Repository: Start by cloning this GitHub repository to your local machine using the following command:
+
+    `git clone https://github.com/brammichielsen/challenge-regression.git`
+
+2. Create and activate a Virtual Environment: change into the project directory and create a virtual environment to isolate the project's dependencies.
+
+3. Install Dependencies: With the virtual environment activated, install the required dependencies from the requirements.txt file. This will ensure you have the same versions of the dependencies used in this project:
+
+    `pip install -r requirements.txt`
+
+    This will install pandas, scikit_learn, and xgboost with the specific versions specified in the requirements.txt file.
+
+4. Run the Project: Now that the dependencies are installed, you can run the project by executing the main Python script.
+
+    `python main.py`
 
 ## 3. Usage:
-In the usage section, explain how to use your project. Provide examples or code snippets to illustrate how to use different features or functionalities of your project. This section should help users get started with your project and understand how to interact with it.
+
+(tbd) 
 
 ## 4. Folder structure:
-In this section, describe the folder structure of your project. You can either manually list the directories and their purposes or use tools like "project-tree-generator" or VScode project tree extension to generate a visual representation of the folder structure. This section helps users and contributors navigate the project's organization.
 
-## 5. Visuals:
-If you have any screenshots, images, or visual representations of your project in action, you can include them in this section. Visuals can be helpful in showcasing the project's interface, output, or any other visual aspects.
+└── challenge-regression/
+    ├── data/
+    │   └── holds the .csv file the program will use for input
+    ├── src/
+    │   └── data_format.py
+    │   └── data_import.py
+    │   └── data_prepare.py
+    │   └── model_eval.py
+    │   └── model_select_train.py
+    └── .gitignore
+    └── main.py
+    └── README.md
+    └── requirements.txt
 
-## 6. Contributors:
-In the contributors section, acknowledge the individuals who have contributed to the project. You can list their names or GitHub usernames and describe their contributions. If your project is open-source and accepts contributions, you can also include guidelines on how others can contribute.
+## 5. Contributors:
+This was a solo project by Bram Michielsen.
+- https://github.com/brammichielsen
+- https://www.linkedin.com/in/brammichielsen/
 
-## 7. Timeline:
-- Day 1:
+## 6. Timeline:
+- Day 1: 
+    - created initial setup (virtual environment, packages, updated repository)
+    - worked on logical flow and built initial script/.py file and folder structure
 - Day 2: 
+    - took a step back to build pipeline in Jupyter notebook for debugging and overview purposes
 - Day 3:
+    - completed one-pass, start-to-finish, linear regression pipeline in Jupyter notebook
+    - started integration of non-linear regression pipeline using xgboost for score comparison
 - Day 4: 
-    - integrating all the 
+    - finished combining linear regression and non-linear regression flows
+    - integrated all the Jupyter Notebook modules into the corresponding .py files
+    - added the .csv encapsulation, using regular expression to read the .csv file in /data
+    - ensured all the functions have docstrings
+    - touched up code comments
+    - wrote the README.md
 
-## 8. Personal situation:
+## 7. Personal situation:
 Working on this third part of the project helped me face my personal pitfalls of perfectionism and resulting fear of failure. It made me focus on pushing through to a functioning MVP while retaining command of the code and logic, before getting bogged down in the details. 
 
 Taking a step back to create the separate modules of the program in individual Jupyter Notebook cells really helped with keeping the overall structure in mind, as well as incrementally building out functions and debugging.
