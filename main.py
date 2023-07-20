@@ -1,3 +1,4 @@
+from src.data_import import find_csv_file, data_import
 from src.data_import import data_import
 from src.data_prepare import data_clean, data_preprocess
 from src.data_format import train_test_split_data, scale_data
@@ -7,8 +8,18 @@ from sklearn.linear_model import LinearRegression
 from xgboost import XGBRegressor
 
 def main():
-    # Specify the file path of the CSV file
-    file_path = "data/property_data.csv"
+    # Define the directory path where the CSV files are located
+    directory_path = "data/"
+
+    # Find a .csv file in the specified directory
+    file_path = find_csv_file(directory_path)
+
+    if file_path:
+        # Read the dataset from the .csv file
+        imported_data = data_import(file_path)
+        # Now you can work with the imported_data DataFrame
+    else:
+        print("Error: Could not find a .csv file in the specified directory.")
 
     # Call the data_import function to read the CSV file
     imported_data = data_import(file_path)
