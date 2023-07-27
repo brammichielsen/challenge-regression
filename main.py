@@ -6,6 +6,7 @@ from src.model_select_train_score import model_select_train_score
 from src.model_eval import model_error_calculate, model_crossvalidate
 from sklearn.linear_model import LinearRegression
 from xgboost import XGBRegressor
+import joblib
 
 def main():
     """
@@ -60,11 +61,20 @@ def main():
 
     # Train and evaluate the Linear Regression model
     linear_regression_model = LinearRegression()
+
     linear_regression_model, linear_regression_score = model_select_train_score(linear_regression_model, X_train_scaled, X_test_scaled, y_train, y_test)
 
     # Train and evaluate the XGBoost model
     xgboost_model = XGBRegressor()
     xgboost_model, xgboost_score = model_select_train_score(xgboost_model, X_train_scaled, X_test_scaled, y_train, y_test)
+
+    # file name, using *.joblib as a file extension
+    filename_xgboost = "xgboost.joblib"
+    filename_linear_regression = "linear_regression.joblib"
+
+    # save model
+    joblib.dump(xgboost_model, filename_xgboost, compress = 3)
+    joblib.dump(linear_regression_model, filename_linear_regression, compress = 3)
 
     # Show the model scores
     print("Linear Regression Score:", linear_regression_score)
