@@ -3,26 +3,7 @@ import uvicorn
 from pydantic import BaseModel 
 from src.preprocessing import preprocess_new_data
 from src.predict import predict_new_data
-
-'''
-class new_property(BaseModel):
-   area: int
-   property_type: str
-   rooms_number: int
-   zip_code: int
-   land_area: int
-   garden: bool
-   garden_area: int
-   equipped_kitchen: bool
-   full_address: str
-   swimming_pool: bool
-   furnished: bool
-   open_fire: bool
-   terrace: bool
-   terrace_area: int
-   facades_number: int
-   building_state: str
-'''
+import requests
 
 app = fastapi.FastAPI()
 
@@ -34,11 +15,9 @@ def get_request_info():
            "    \"Living area\": int,\n" \
            "    \"Subtype of property\": \"APARTMENT\" | \"HOUSE\" | \"OTHERS\",\n" \
            "    \"Number of bedrooms\": int,\n" \
-           "    \"Zip code\": int,\n" \
            "    \"Garden\": Optional[bool],\n" \
            "    \"Garden area\": Optional[int],\n" \
            "    \"Kitchen\": Optional[bool],\n" \
-           "    \"Locality\": Optional[str],\n" \
            "    \"Swimming pool\": Optional[bool],\n" \
            "    \"Terrace\": Optional[bool],\n" \
            "    \"Number of facades\": Optional[int],\n" \

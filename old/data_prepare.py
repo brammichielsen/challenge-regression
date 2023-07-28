@@ -1,4 +1,7 @@
 import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.impute import SimpleImputer
+import joblib
 
 def data_clean(data):
     """
@@ -35,34 +38,33 @@ def data_clean(data):
     return data
 
 def data_preprocess(data):
-    """
-    Preprocess the input dataset by performing the following operations:
-    1. Drop the 'Type of property' column.
-    2. Perform one-hot encoding on the 'Subtype of property' column.
-    3. Drop the original 'Subtype of property' column.
-    4. Concatenate the one-hot encoded DataFrame with the original 'data' DataFrame.
-    5. Convert the entire DataFrame to integer type.
-
-    Parameters:
-    data (DataFrame): The input dataset to be preprocessed.
-
-    Returns:
-    DataFrame: The preprocessed dataset.
-    """
-
     # Drop the 'Type of property' column
     data.drop(['Type of property'], axis=1, inplace=True)
 
+    # Handle missing values using SimpleImputer with strategy 'constant'
+    missing_value_imputer = SimpleImputer(strategy='constant', fill_value='MISSING')
+    data = pd.DataFrame(missing_value_imputer.fit_transform(data), columns=data.columns)
+
     # Perform one-hot encoding on the 'Subtype of property' column
-    one_hot_encoding = pd.get_dummies(data['Subtype of property'], prefix='Subtype', dtype=int)
+    encoder = OneHotEncoder(sparse=False, handle_unknown='ignore')
+    subtype_encoded = encoder.fit_transform(data[['Subtype of property']])
+
+    # Get the feature names after one-hot encoding
+    num_subtypes = len(encoder.categories_[0])
+    column_names = ['Subtype_{}'.format(i) for i in range(num_subtypes)]
+    subtype_encoded_df = pd.DataFrame(subtype_encoded, columns=column_names)
 
     # Drop the original 'Subtype of property' column
     data.drop('Subtype of property', axis=1, inplace=True)
 
     # Concatenate the one-hot encoded DataFrame with the original 'data' DataFrame
-    data = pd.concat([data, one_hot_encoding], axis=1)
+    data = pd.concat([data, subtype_encoded_df], axis=1)
 
-    # Convert the entire DataFrame to integer type
-    data = data.astype(int)
+    # Convert the entire DataFrame to integer type (Note: non-finite values will be handled)
+    data = data.astype(int, errors='ignore')
+
+    # save encoder
+    joblib.dump(encoder, "oh_encoder.joblib")
 
     return data
+

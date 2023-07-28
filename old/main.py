@@ -1,9 +1,9 @@
-from src.data_import import find_csv_file, data_import
-from src.data_import import data_import
-from src.data_prepare import data_clean, data_preprocess
-from src.data_format import train_test_split_data, scale_data
-from src.model_select_train_score import model_select_train_score
-from src.model_eval import model_error_calculate, model_crossvalidate
+from data_import import find_csv_file, data_import
+from data_import import data_import
+from data_prepare import data_clean, data_preprocess
+from data_format import train_test_split_data, scale_data
+from model_select_train_score import model_select_train_score
+from model_eval import model_error_calculate, model_crossvalidate
 from sklearn.linear_model import LinearRegression
 from xgboost import XGBRegressor
 import joblib
